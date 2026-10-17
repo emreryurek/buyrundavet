@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Davetiye Oluştur · buyrundavet</title>
+<meta name="description" content="Dijital davetiyenizi adım adım oluşturun, canlı önizleyin ve WhatsApp'tan paylaşın.">
+<meta name="theme-color" content="#faf7f1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<header class="ust golgeli">
+  <div class="kap">
+    <a class="logo" href="index.html">buyrun<i>davet</i></a>
+    <a class="btn cizgi kucuk" href="index.html">Ana Sayfa</a>
+  </div>
+</header>
+
+<main class="kap olustur">
+  <form id="form" novalidate>
+    <p class="goz">Davetiye oluştur</p>
+    <h1 style="margin-top:8px">Davetiyenizi hazırlayalım</h1>
+    <p class="alt-yazi">Yazdıkça önizleme değişir. Boş bıraktığınız alanlarda örnek bilgiler görünür.</p>
+
+    <div class="blok">
+      <div class="blok-baslik"><span>1</span><h2>Etkinlik türü</h2></div>
+      <div class="secenekler" id="turlar"></div>
+    </div>
+
+    <div class="blok">
+      <div class="blok-baslik"><span>2</span><h2>Tasarım</h2></div>
+      <div class="secenekler" id="temalar"></div>
+      <p class="bilgi uyari" id="premiumNot" style="margin-top:12px" hidden>Bu tasarım lansmanda Premium olacak. Demo süresince ücretsiz deneyebilirsiniz.</p>
+    </div>
+
+    <div class="blok">
+      <div class="blok-baslik"><span>3</span><h2>Bilgiler</h2></div>
+      <div class="alanlar">
+        <div class="alan" id="aAlan"><label for="a" id="aEtiket">Gelinin adı</label><input id="a" name="a" autocomplete="off" maxlength="30"></div>
+        <div class="alan" id="bAlan"><label for="b" id="bEtiket">Damadın adı</label><input id="b" name="b" autocomplete="off" maxlength="30"></div>
+        <div class="alan" id="faAlan"><label for="fa" id="faEtiket">Gelinin ailesi</label><input id="fa" name="fa" autocomplete="off" maxlength="60" placeholder="Örn. Ayşe & Mehmet Yılmaz"></div>
+        <div class="alan" id="fbAlan"><label for="fb" id="fbEtiket">Damadın ailesi</label><input id="fb" name="fb" autocomplete="off" maxlength="60" placeholder="Örn. Fatma & Ali Demir"></div>
+        <div class="alan" id="dAlan"><label for="d">Tarih</label><input id="d" name="d" type="date"></div>
+        <div class="alan"><label for="h">Başlangıç saati</label><input id="h" name="h" type="time" value="19:00"></div>
+        <div class="alan tam" id="sAlan"><label for="s">Salon / mekân adı</label><input id="s" name="s" autocomplete="off" maxlength="60"></div>
+        <div class="alan tam"><label for="ad">Adres</label><input id="ad" name="ad" autocomplete="off" maxlength="120" placeholder="Mahalle, sokak, ilçe / il"></div>
+        <div class="alan tam"><label for="m">Davet metni</label><textarea id="m" name="m" rows="3" maxlength="300"></textarea></div>
+        <div class="alan"><label for="p">Program</label><textarea id="p" name="p" rows="4" maxlength="300"></textarea><p class="ipucu">Her satıra bir etkinlik: "19:00 Nikah Töreni"</p></div>
+        <div class="alan"><label for="l">Katılım bildirimi son günü</label><input id="l" name="l" type="date"><p class="ipucu">Boş bırakırsanız tarih gösterilmez.</p></div>
+      </div>
+    </div>
+
+    <div class="olustur-son">
+      <p class="bilgi uyari" id="hataNot" hidden></p>
+      <button class="btn ana" type="submit" style="width:100%">Davetiyemi Oluştur</button>
+
+      <div class="sonuc" id="sonuc" hidden>
+        <h3>Davetiyeniz hazır</h3>
+        <p style="color:var(--soluk)">Bu linki paylaşın. Linki açan herkes davetiyenizi görür.</p>
+        <div class="link-satir">
+          <input id="link" readonly aria-label="Davetiye linki">
+          <button class="btn cizgi kucuk" type="button" id="kopyala">Kopyala</button>
+        </div>
+        <div class="paylas">
+          <a class="btn wp" id="wp" target="_blank" rel="noopener">WhatsApp'ta Paylaş</a>
+          <a class="btn cizgi" id="ac" target="_blank" rel="noopener">Davetiyeyi Aç</a>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <aside class="onizleme" id="onizleme" aria-label="Canlı önizleme">
+    <div class="telefon">
+      <div class="ekran"><iframe id="cerceve" title="Davetiye önizlemesi"></iframe></div>
+    </div>
+    <p>Canlı önizleme</p>
+    <button class="btn onizleme-kapat" type="button" id="onizlemeKapat">Düzenlemeye Dön</button>
+  </aside>
+</main>
+
+<button class="btn ana onizle-dugme" type="button" id="onizleDugme">Önizle</button>
+
+<script src="ortak.js"></script>
+<script src="olustur.js"></script>
+</body>
+</html>

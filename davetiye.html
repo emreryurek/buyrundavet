@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Davetiye · buyrundavet</title>
+<meta name="description" content="Davetlisiniz. Davetiyeyi açmak için dokunun.">
+<meta property="og:title" content="Davetlisiniz">
+<meta property="og:description" content="Sizi de aramızda görmek istiyoruz. Davetiyeyi açmak için dokunun.">
+<meta name="theme-color" content="#f3ede1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="davetiye.css">
+</head>
+<body class="kapali">
+
+<!-- Süsleme: zeytin dalı -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="dal" viewBox="0 0 200 40">
+    <path d="M14 24 C60 13 140 13 186 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+    <g fill="currentColor" opacity=".85">
+      <ellipse cx="38" cy="15" rx="9" ry="3.1" transform="rotate(-30 38 15)"/>
+      <ellipse cx="54" cy="25" rx="9" ry="3.1" transform="rotate(24 54 25)"/>
+      <ellipse cx="72" cy="11" rx="9" ry="3.1" transform="rotate(-20 72 11)"/>
+      <ellipse cx="128" cy="11" rx="9" ry="3.1" transform="rotate(20 128 11)"/>
+      <ellipse cx="146" cy="25" rx="9" ry="3.1" transform="rotate(-24 146 25)"/>
+      <ellipse cx="162" cy="15" rx="9" ry="3.1" transform="rotate(30 162 15)"/>
+    </g>
+    <circle cx="100" cy="16.5" r="3.4" fill="var(--altin)"/>
+  </symbol>
+</svg>
+
+<!-- Zarf açılış ekranı -->
+<div class="zarf-ekran" id="zarfEkran">
+  <p class="ust-yazi" data-k="baslik"></p>
+  <button class="zarf" id="zarf" type="button" aria-label="Davetiyeyi aç">
+    <span class="govde"></span>
+    <span class="kart"><span data-k="isimKisa"></span></span>
+    <span class="on"></span>
+    <span class="kapak"></span>
+    <span class="muhur" data-k="basHarf"></span>
+  </button>
+  <p class="ipucu">Açmak için zarfa dokunun</p>
+</div>
+
+<main class="sayfa">
+
+  <section class="hero">
+    <svg class="dal r"><use href="#dal"/></svg>
+    <p class="ust-yazi r" data-k="ust"></p>
+    <h1 class="isimler r">
+      <span data-k="isimA"></span>
+      <span class="ve" id="ve">&amp;</span>
+      <span data-k="isimB" id="isimB"></span>
+    </h1>
+    <p class="tarih-satir r"><span class="c"></span><span data-k="tarihNokta"></span><span class="c"></span></p>
+    <p class="gun-adi r" data-k="gunAdi"></p>
+    <a class="asagi" href="#davet" aria-label="Aşağı kaydır">
+      <svg viewBox="0 0 24 24" width="22" height="22"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    </a>
+  </section>
+
+  <section id="davet" class="davet">
+    <p class="ust-yazi r">Davetlisiniz</p>
+    <p class="mesaj r" data-k="mesaj"></p>
+    <div class="aileler r" id="aileler">
+      <div><small data-k="aileAEtiket"></small><span data-k="aileA"></span></div>
+      <div id="aileBKutu"><small data-k="aileBEtiket"></small><span data-k="aileB"></span></div>
+    </div>
+  </section>
+
+  <section class="sayac-bolum">
+    <svg class="dal r"><use href="#dal"/></svg>
+    <p class="ust-yazi r">Geri Sayım</p>
+    <h2 class="r" id="sayacBaslik">Büyük güne kalan</h2>
+    <div class="sayac r" id="sayac">
+      <div><b data-s="gun">0</b><small>Gün</small></div>
+      <div><b data-s="saat">0</b><small>Saat</small></div>
+      <div><b data-s="dk">0</b><small>Dakika</small></div>
+      <div><b data-s="sn">0</b><small>Saniye</small></div>
+    </div>
+    <p class="sayac-bitti r" id="sayacBitti" hidden></p>
+  </section>
+
+  <section class="program-bolum" id="programBolum">
+    <p class="ust-yazi r">O Gün</p>
+    <h2 class="r">Program</h2>
+    <ul class="program r" id="program"></ul>
+  </section>
+
+  <section class="mekan">
+    <p class="ust-yazi r">Mekân</p>
+    <h2 class="r" data-k="salon"></h2>
+    <p class="adres r" data-k="adres"></p>
+    <p class="tam-tarih r" data-k="tarihUzun"></p>
+    <div class="butonlar r">
+      <a class="btn dolu" id="harita" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="9.5" r="2.4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+        Yol Tarifi
+      </a>
+      <button class="btn" id="takvim" type="button">
+        <svg viewBox="0 0 24 24" width="16" height="16"><rect x="4" y="5" width="16" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4 10h16M9 3v4M15 3v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Takvime Ekle
+      </button>
+    </div>
+  </section>
+
+  <section class="lcv" id="lcv">
+    <svg class="dal r"><use href="#dal"/></svg>
+    <p class="ust-yazi r">LCV</p>
+    <h2 class="r">Katılım Bildirimi</h2>
+    <p class="r" id="lcvSatir">Lütfen <b data-k="lcvSonYazi"></b> tarihine kadar bize bildirin.</p>
+
+    <form id="lcvForm" class="r" novalidate>
+      <label><span>Adınız Soyadınız</span>
+        <input name="ad" autocomplete="name" required placeholder="Örn. Zeynep Kaya">
+      </label>
+
+      <div>
+        <span class="etiket">Katılım</span>
+        <div class="secim">
+          <input type="radio" id="kEvet" name="katilim" value="evet" checked>
+          <label for="kEvet">Katılıyorum</label>
+          <input type="radio" id="kHayir" name="katilim" value="hayir">
+          <label for="kHayir">Katılamıyorum</label>
+        </div>
+      </div>
+
+      <label id="kisiAlan"><span>Kişi sayısı</span>
+        <select name="kisi">
+          <option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option>
+        </select>
+      </label>
+
+      <label><span>Notunuz (isteğe bağlı)</span>
+        <textarea name="not" rows="3" placeholder="Bir mesaj bırakın"></textarea>
+      </label>
+
+      <p class="hata" id="hata" hidden>Lütfen adınızı yazın.</p>
+      <button class="btn dolu genis" type="submit">Gönder</button>
+    </form>
+
+    <div class="tesekkur" id="tesekkur" hidden>
+      <p class="el">Teşekkürler</p>
+      <p id="tesekkurMetin"></p>
+    </div>
+  </section>
+
+  <footer class="alt">
+    <p class="el" data-k="isimKisa"></p>
+    <a class="marka" href="index.html" target="_blank" rel="noopener">buyrundavet.com ile hazırlandı · Sen de oluştur</a>
+  </footer>
+
+</main>
+
+<script src="ortak.js"></script>
+<script src="davetiye.js"></script>
+</body>
+</html>
